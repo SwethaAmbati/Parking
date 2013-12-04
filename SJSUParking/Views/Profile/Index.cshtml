@@ -1,0 +1,32 @@
+﻿@model SJSUParking.Models.UserModel
+
+
+@{
+    ViewBag.Title = "UserProfile";
+    
+}
+
+<h2>User Profile</h2>
+<div>
+         
+ 
+     @Html.LabelFor(model => model.FirstName) :
+    @Html.DisplayFor(model => model.FirstName)
+    <br />
+     @Html.LabelFor(model => model.LastName) :
+    @Html.DisplayFor(model => model.LastName)
+    <br />
+     @Html.LabelFor(model => model.Email) :
+    @Html.DisplayFor(model => model.Email)
+        <br />
+
+     @Html.LabelFor(model => model.SJSUId) :
+    @Html.DisplayFor(model => model.SJSUId)
+    <br />
+     @Html.LabelFor(model => model.Phone) :
+    @Html.DisplayFor(model => model.Phone)
+    <br />
+     @Html.LabelFor(model => model.DrivingLicNo) :
+    @Html.DisplayFor(model => model.DrivingLicNo)
+
+</div>
