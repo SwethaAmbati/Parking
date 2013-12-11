@@ -38,6 +38,7 @@ namespace SJSUParking.Controllers.DataAccess
             UserModel userInfo = new UserModel();
             sdr.Read();
             userInfo.SJSUId = sdr.GetString(0);
+            userInfo.Password = sdr.GetString(1);
             userInfo.Email = sdr.GetString(2);
             userInfo.FirstName = sdr.GetString(3);
             userInfo.LastName = sdr.GetString(4);
