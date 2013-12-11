@@ -12,11 +12,23 @@ namespace SJSUParking.Controllers
     {
         //
         // GET: /EditInformation/
-        [HttpGet]
-        public ActionResult EditInformation(int id)
+
+        public ActionResult Index()
         {
-            UserModel editInfo = new UserModel();
-            return View(editInfo);
+            UserModel editinfo = DAL.EditProfile(this.User.Identity.Name.ToString());
+            return View(editinfo);     
+            
+        }
+
+        [HttpPost]
+        public ActionResult Index(UserModel user)
+        {
+            if (!ModelState.IsValid)
+            {
+                DAL.SaveProfile(user, this.User.Identity.Name.ToString());
+                return RedirectToAction("Index", "Profile");
+          }
+            return View();
         }
 
     }
