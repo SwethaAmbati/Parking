@@ -70,7 +70,6 @@ namespace SJSUParking.Controllers.DataAccess
 
         public static void SaveProfile(UserModel usermodel, string username)
         {
-//            string query = string.Format("Update Users (Password, Email, FirstName, LastName, Phone, DrivingLicNo,Type) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}') WHERE SJSUId = '{7}'",
             string query = string.Format("UPDATE Users SET Password='{0}',Email='{1}',FirstName='{2}',LastName='{3}',Phone='{4}',DrivingLicNo='{5}',Type='{6}' WHERE SJSUId = '{7}'",
             usermodel.Password, usermodel.Email, usermodel.FirstName, usermodel.LastName, usermodel.Phone, usermodel.DrivingLicNo, usermodel.Type, username);
             SqlCommand cmd = new SqlCommand(query, conn);
