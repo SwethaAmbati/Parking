@@ -16,8 +16,6 @@ namespace SJSUParking.Controllers
         public ActionResult EditInformation(int id)
         {
             UserModel editInfo = new UserModel();
-
-
             return View(editInfo);
         }
 
