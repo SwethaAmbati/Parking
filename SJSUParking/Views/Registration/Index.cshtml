@@ -60,13 +60,17 @@
     <div class="editor-field">
         @Html.EditorFor(m => m.Phone)
         @Html.ValidationMessageFor(m => m.Phone)
-    </div>
-       <div class="editor-label">
+     <div class="editor-label">
         @Html.LabelFor(m => m.Type)
     </div>
     <div class="editor-field">
-        @Html.EditorFor(m => m.Type)
-        @Html.ValidationMessageFor(m => m.Type)
+
+       @Html.DropDownList("Type", new List<SelectListItem> {
+       new SelectListItem{ Text = "Staff", Value = "Staff"},
+       new SelectListItem{ Text = "Student", Value = "Student"} 
+             
+   }, "Select Type of User")
+        
     </div>
     
     <input type="submit" />
