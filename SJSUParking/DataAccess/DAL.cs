@@ -47,6 +47,37 @@ namespace SJSUParking.Controllers.DataAccess
             conn.Close();
             return (userInfo);
         }
+        
+         public static UserModel EditProfile(string username)
+        {
+            string query = string.Format("Select * FROM Users Where SJSUId = '{0}' ", username);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            conn.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            UserModel editInfo = new UserModel();
+            sdr.Read();
+            editInfo.SJSUId = sdr.GetString(0);
+            editInfo.Password = sdr.GetString(1);
+            editInfo.Email = sdr.GetString(2);
+            editInfo.FirstName = sdr.GetString(3);
+            editInfo.LastName = sdr.GetString(4);
+            editInfo.Phone = sdr.GetString(5);
+            editInfo.DrivingLicNo = sdr.GetString(6);
+            editInfo.Type = sdr.GetString(7);
+            conn.Close();
+            return (editInfo);
+        }
+
+        public static void SaveProfile(UserModel usermodel, string username)
+        {
+//            string query = string.Format("Update Users (Password, Email, FirstName, LastName, Phone, DrivingLicNo,Type) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}') WHERE SJSUId = '{7}'",
+            string query = string.Format("UPDATE Users SET Password='{0}',Email='{1}',FirstName='{2}',LastName='{3}',Phone='{4}',DrivingLicNo='{5}',Type='{6}' WHERE SJSUId = '{7}'",
+            usermodel.Password, usermodel.Email, usermodel.FirstName, usermodel.LastName, usermodel.Phone, usermodel.DrivingLicNo, usermodel.Type, username);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            conn.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            conn.Close();
+        }
 
         public static void CreateNewUser(UserModel usermodel)
         {
