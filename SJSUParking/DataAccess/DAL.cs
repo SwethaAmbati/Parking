@@ -43,6 +43,7 @@ namespace SJSUParking.Controllers.DataAccess
             userInfo.LastName = sdr.GetString(4);
             userInfo.Phone = sdr.GetString(5);
             userInfo.DrivingLicNo = sdr.GetString(6);
+            userInfo.Type = sdr.GetString(7);
             conn.Close();
             return (userInfo);
         }
